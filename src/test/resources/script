@@ -1,0 +1,22 @@
+model *
+select all
+wireframe off
+cpk off
+select protein
+cartoon
+select *:A
+color [155,50,50]
+select *:A and 242-254 and sheet
+color red
+select *:A and (sidechain or alpha) and (177 or 198 or 209 or 211)
+cpk
+color [255,100,100]
+select *:B
+color [50,100,155]
+select *:B and sheet
+color cyan
+rotate z -46.
+rotate y 81.
+rotate z 148.
+background black
+frank off

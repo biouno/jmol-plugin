@@ -1,7 +1,6 @@
 package org.biouno.jmol;
 
 import hudson.Extension;
-import hudson.FilePath;
 import hudson.Launcher;
 import hudson.model.BuildListener;
 import hudson.model.AbstractBuild;
@@ -23,22 +22,17 @@ import org.kohsuke.stapler.DataBoundConstructor;
  */
 public class JmolPublisher extends Recorder {
 
-	private final String file;
 	private final String script;
 	private final Integer width;
 
 	@DataBoundConstructor
-	public JmolPublisher(String file, String script, Integer width) {
-		this.file = file;
+	public JmolPublisher(String script, Integer width) {
 		this.script = script;
 		this.width = width;
 	}
-
-	/**
-	 * @return the file
-	 */
-	public String getFile() {
-		return file;
+	
+	public Object readResolve() {
+		return new JmolPublisher(script, width);
 	}
 
 	/**
@@ -68,13 +62,10 @@ public class JmolPublisher extends Recorder {
 			BuildListener listener) throws InterruptedException, IOException {
 		PrintStream logger = listener.getLogger();
 		logger.println("Publishing Jmol file");
-		FilePath ws = build.getWorkspace();
-		FilePath molFile = new FilePath(ws, getFile());
-		if (molFile.exists() && !molFile.isDirectory()) {
-			build.getActions().add(new JmolBuildAction(build, getWidth(), getFile(), getScript()));
-		} else {
-			logger.println("No Jmol file found.");
-		}
+		
+		logger.println("Creating WS_URL env var");
+
+		build.addAction(new JmolBuildAction(build, getWidth(), getScript()));
 		
 		return true;
 	}

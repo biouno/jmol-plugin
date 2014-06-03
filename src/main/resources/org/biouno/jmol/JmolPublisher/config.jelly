@@ -1,7 +1,4 @@
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
-  <f:entry title="File (mol, pdb, ...)" field="file" help="/plugin/jmol/help-file.html">
-    <f:textbox />
-  </f:entry>
   <f:entry title="Script" field="script" help="/plugin/jmol/help-script.html">
     <f:textarea />
   </f:entry>

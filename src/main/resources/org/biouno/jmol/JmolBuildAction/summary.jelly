@@ -18,7 +18,7 @@
         use: "HTML5"
     };
     Jmol.Info = Info;
-    jmolApplet(${it.getWidth()}, "load FILES ${rootURL}/${it.getFileURL()};${it.getScriptFormatted()}");
+    jmolApplet(${it.getWidth()}, "${it.getScriptFormatted()}");
     jmolRadioGroup([
     ["select protein;cpk off;cartoon","show ribbon diagram","checked"],
     ["select protein;cpk;cartoon off","show protein atoms"]

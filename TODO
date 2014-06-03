@@ -1,3 +1,5 @@
 From: http://sbkb.org/fs
 
 - Download proteins by their ID (BioJava?)
+
+- Rewrite jsmol.php in Java

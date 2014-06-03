@@ -10,7 +10,7 @@
 
   <groupId>org.biouno</groupId>
   <artifactId>jmol</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.1</version>
   <packaging>hpi</packaging>
   <name>Jmol Plug-in</name>
   <description>A plug-in that renders build actions with the Jmol Javascript applet to display molecules.</description>

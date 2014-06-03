@@ -1,7 +1,7 @@
-package org.biouno.jmolplugin;
+package org.biouno.jmol;
 
+import hudson.model.Action;
 import hudson.model.AbstractBuild;
-import hudson.triggers.SCMTrigger.BuildAction;
 
 import java.util.StringTokenizer;
 
@@ -10,14 +10,16 @@ import org.apache.commons.lang.StringUtils;
 /**
  * Build action that adds jmol summary.
  */
-public class JmolBuildAction extends BuildAction {
+public class JmolBuildAction implements Action {
 
+	private final @SuppressWarnings("rawtypes") AbstractBuild build;
 	private final String file;
 	private final String script;
 	private final Integer width;
 	
 	public JmolBuildAction(@SuppressWarnings("rawtypes") AbstractBuild build, Integer width, String file, String script) {
-		super(build);
+		
+		this.build = build;
 		this.width = width;
 		this.file = file;
 		this.script = script;
@@ -28,7 +30,7 @@ public class JmolBuildAction extends BuildAction {
 	}
 	
 	public String getFileURL() {
-		return build.getProject().getUrl() + "/ws/" + file;
+		return build.getProject().getUrl() + "ws/" + file;
 	}
 	
 	public String getScriptFormatted() {
@@ -42,6 +44,18 @@ public class JmolBuildAction extends BuildAction {
 			}
 		}
 		return sb.toString();
+	}
+
+	public String getIconFileName() {
+		return "/plugin/jmol/icon/jmol-icon-24.png";
+	}
+
+	public String getDisplayName() {
+		return "Jmol";
+	}
+
+	public String getUrlName() {
+		return null;
 	}
 
 }

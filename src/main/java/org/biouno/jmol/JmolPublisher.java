@@ -1,4 +1,4 @@
-package org.biouno.jmolplugin;
+package org.biouno.jmol;
 
 import hudson.Extension;
 import hudson.FilePath;
@@ -59,6 +59,10 @@ public class JmolPublisher extends Recorder {
 		return BuildStepMonitor.BUILD;
 	}
 	
+	/**
+	 * Gathers the Jmol parameters and adds a build action to produce the Javascript 
+	 * applet.
+	 */
 	@Override
 	public boolean perform(AbstractBuild<?, ?> build, Launcher launcher,
 			BuildListener listener) throws InterruptedException, IOException {

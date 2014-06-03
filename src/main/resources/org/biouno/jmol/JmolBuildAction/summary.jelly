@@ -1,0 +1,29 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+  <script src="${rootURL}/plugin/jmol/js/jquery.js"></script>
+  <script>jQuery.noConflict();</script>
+  <script type="text/javascript">var baseUrl = '/', js = '${rootURL}/plugin/jmol/js/';</script>
+  <script src="${rootURL}/plugin/jmol/js/JSmoljQueryExt.js"></script>
+  <script src="${rootURL}/plugin/jmol/js/JSmolCore.js"></script>
+  <script src="${rootURL}/plugin/jmol/js/JSmolApplet.js"></script>
+  <script src="${rootURL}/plugin/jmol/js/JSmolApi.js"></script>
+  <script src="${rootURL}/plugin/jmol/js/j2sjmol.js"></script>
+  <script src="${rootURL}/plugin/jmol/js/JSmolThree.js"></script>
+  <script src="${rootURL}/plugin/jmol/js/JSmolGLmol.js"></script>
+  <script src="${rootURL}/plugin/jmol/js/JSmol.nojq.js"></script>
+  <script src="${rootURL}/plugin/jmol/js/Jmol2.js"></script>
+  <h2>Jmol</h2>
+  <script type='text/javascript'>
+    var Info = {
+        j2sPath: "${rootURL}/plugin/jmol/j2s",
+        use: "HTML5"
+    };
+    Jmol.Info = Info;
+    jmolApplet(${it.getWidth()}, "load FILES ${rootURL}/${it.getFileURL()};${it.getScriptFormatted()}");
+    jmolRadioGroup([
+    ["select protein;cpk off;cartoon","show ribbon diagram","checked"],
+    ["select protein;cpk;cartoon off","show protein atoms"]
+    ]);
+    jmolBr();
+    jmolBr();
+  </script>
+</j:jelly>
